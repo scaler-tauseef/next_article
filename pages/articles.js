@@ -6,12 +6,11 @@ function Article({ articles }) {
     useEffect(() => {
       console.log("Taking effect");
       async function fetchData() {
-        // You can await here
+        // API calls which will get data from ROR through proxy from client
         const res = await fetch('/users')
         const users = await res.json();
         console.log("Users");
         console.log(users);
-        // ...
       }
       fetchData();
     }, []);
