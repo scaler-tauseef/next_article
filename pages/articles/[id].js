@@ -17,12 +17,15 @@ export async function getStaticPaths() {
   
     // We'll pre-render only these paths at build time.
     // { fallback: false } means other routes should 404.
-    return { paths, fallback: false }
+    // { fallback: blocking } will server-render pages
+    // on-demand if the path doesn't exist.
+    return { paths, fallback: 'blocking' }
 }
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
-    // params contains the article `id`.
+  console.log("Getting static props", params.id);
+  // params contains the article `id`.
     // If the route is like /articles/1, then params.id is 1
     const res = await fetch(`http://localhost:8080/api/v1/articles/${params.id}`)
     const article = await res.json()

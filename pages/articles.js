@@ -1,6 +1,21 @@
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 function Article({ articles }) {
+
+    useEffect(() => {
+      console.log("Taking effect");
+      async function fetchData() {
+        // You can await here
+        const res = await fetch('/users')
+        const users = await res.json();
+        console.log("Users");
+        console.log(users);
+        // ...
+      }
+      fetchData();
+    }, []);
+
     return (
       <ul>
         {articles.map((article) => (
