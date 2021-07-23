@@ -5,7 +5,7 @@ module.exports = {
     return [
       {
         source: '/users',
-        destination: 'http://localhost:8080/api/v1/users',
+        destination: `${process.env.HOST}/api/v1/users`,
       },
     ]
   },

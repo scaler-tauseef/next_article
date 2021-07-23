@@ -27,7 +27,7 @@ export async function getStaticProps({ params }) {
   console.log("Getting static props", params.id);
   // params contains the article `id`.
     // If the route is like /articles/1, then params.id is 1
-    const res = await fetch(`http://localhost:8080/api/v1/articles/${params.id}`)
+    const res = await fetch(`${process.env.HOST}/api/v1/articles/${params.id}`)
     const article = await res.json()
   
     // Pass article data to the page via props
