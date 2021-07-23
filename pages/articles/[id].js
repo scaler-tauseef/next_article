@@ -6,11 +6,11 @@ function Article({ article }) {
 
 // This function gets called at build time
 export async function getStaticPaths() {
-    // Call an external API endpoint to get posts
+    // Call an external API endpoint to get articles
     const res = await fetch('http://localhost:8080/api/v1/articles/')
     const articles = await res.json()
   
-    // Get the paths we want to pre-render based on posts
+    // Get the paths we want to pre-render based on articles
     const paths = articles.map((article) => ({
       params: { id: article.id.toString() },
     }))
@@ -22,12 +22,12 @@ export async function getStaticPaths() {
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
-    // params contains the post `id`.
-    // If the route is like /posts/1, then params.id is 1
+    // params contains the article `id`.
+    // If the route is like /articles/1, then params.id is 1
     const res = await fetch(`http://localhost:8080/api/v1/articles/${params.id}`)
     const article = await res.json()
   
-    // Pass post data to the page via props
+    // Pass article data to the page via props
     return { props: { article } }
   }
 
