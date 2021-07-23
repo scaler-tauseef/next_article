@@ -31,7 +31,7 @@ function Article({ articles }) {
   // This function gets called at build time
 export async function getStaticProps() {
     // Call an external API endpoint to get articles
-    const res = await fetch(`${process.env.HOST}api/v1/articles/`)
+    const res = await fetch(`${process.env.HOST}/api/v1/articles/`)
     const articles = await res.json()
   
     // By returning { props: { articles } }, the Blog component
