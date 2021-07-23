@@ -7,7 +7,7 @@ function Article({ article }) {
 // This function gets called at build time
 export async function getStaticPaths() {
     // Call an external API endpoint to get articles
-    const res = await fetch('http://localhost:8080/api/v1/articles/')
+    const res = await fetch(`${process.env.HOST}/api/v1/articles/`)
     const articles = await res.json()
   
     // Get the paths we want to pre-render based on articles
