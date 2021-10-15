@@ -12,7 +12,7 @@ export async function getStaticPaths() {
   
     // Get the paths we want to pre-render based on articles
     const paths = articles.map((article) => ({
-      params: { id: article.id.toString() },
+      params: { id: article.slug.toString() },
     }))
   
     // We'll pre-render only these paths at build time.
